@@ -3,13 +3,14 @@ LABEL maintainer="Nicolas Degardin <degardin.n@gmail.com>"
 
 USER root
 
-RUN npm i -g express --unsafe-perm=true --allow-root
+RUN npm i -g express pretty
 
 RUN mkdir -p /srv
 WORKDIR /srv
 
 RUN npm link express
 RUN npm link puppeteer
+RUN npm link pretty
 
 COPY files/boozang.js /srv/boozang.js
 RUN chmod a+x /srv/boozang.js

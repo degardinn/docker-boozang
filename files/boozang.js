@@ -2,6 +2,7 @@
 
 const puppeteer = require('puppeteer')
 const fs = require('fs')
+const pretty = require('pretty')
 
 let url = process.argv[2]
 const device = process.env.DEVICE || "default"
@@ -20,7 +21,7 @@ const isURL = (str) => {
         '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
         '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
         '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-        '(\\#[.-a-z\\d_/]*)?$', 'i') // fragment locator (. and / are normally invalid)
+        '(\\#[.-a-z\\d_/]*)/run$', 'i') // mandatory fragment locator (. and / are allowed even if they are normally invalid)
     return pattern.test(str)
 }
 
@@ -63,9 +64,9 @@ if (timeout) {
         console.log(`Opening URL: ${url}`)
 
         // Insert token, if option set
-        if (token) {
+        if (token && url.indexOf('token') == "-1") {
             const position = url.indexOf('#')
-            url = [url.slice(0, position), "&token=" + token, url.slice(position)].join('')
+            url = [url.slice(0, position), (url.indexOf('?') == -1) ? '?' : '&', "token=" + token, url.slice(position)].join('')
         }
 
         await page.goto(url)
@@ -83,6 +84,7 @@ if (timeout) {
             let logString = msg.text()
 
             if (logString.includes("<html>")) {
+                console.log(pretty(logString))
             } else {
                 console.log(logString)
             }

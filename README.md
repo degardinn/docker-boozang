@@ -1,4 +1,4 @@
-# Boozang image
+# Boozang Docker container
 
 [`degardinn/boozang`](https://hub.docker.com/r/ndegardin/boozang/)
 
@@ -23,7 +23,7 @@ Basically, the server at the targeted domain and port should serve such an HTML 
 <script type='text/javascript' src='//ai.boozang.com/ide?id=6d34d123abfe65dc'></script>
 ```
 
-And the *Boozang* test URL should call the code fragment, and end with **run**, for instance:
+The *Boozang* test URL must call the code fragment, and end with **/run**, for instance:
 
 `http://localhost/bz.html#6d34d123abfe65dc/0.0.1/m1/t1/run`
 
@@ -50,7 +50,7 @@ The following optional environment variables can be specified.
 
 * `DEVICE`: define a specific [device](https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js) to run the tests
 * `TIMEOUT`: define the command timeout time in *ms*
-* `TOKEN`: add a *Boozang* user token to the URL, to allow user connection. The token can also be directly specified in the URL, but doing so won't show it in the output logs
+* `TOKEN`: add a *Boozang* user token to the URL, to allow user connection. The token can also be directly specified in the URL. In this case, the environment variable token will be ignored.
 * `FILE`: define the report and screenshot file name (without an extension). If not specified, the name is `boozang` followed by the date and time
 * `SCREENSHOT`: if *true*, a screenshot is taken two seconds after opening the URL.
 

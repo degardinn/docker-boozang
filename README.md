@@ -1,8 +1,8 @@
 # Boozang image
 
-[`degardinn/boozang`](https://hub.docker.com/r/degardinn/boozang/)
+[`degardinn/boozang`](https://hub.docker.com/r/ndegardin/boozang/)
 
-A [Boozang](https://boozang.com/) image, based on [alekzonder/puppeteer](https://hub.docker.com/r/alekzonder/puppeteer/), to run Boozang tests in a headless browser.
+A [Boozang](https://boozang.com/) container, based on [alekzonder/puppeteer](https://hub.docker.com/r/alekzonder/puppeteer/), to run Boozang tests in a headless browser.
 
 ## Description
 

@@ -20,6 +20,7 @@ RUN chmod a+rw /var/boozang
 
 VOLUME /var/boozang
 
+ENV PATH=.:$PATH
 ENV DEVICE=
 ENV TIMEOUT=
 ENV FILE=

@@ -17,10 +17,10 @@ RUN chmod a+x /srv/boozang.js
 RUN chown -R node:node /srv
 RUN mkdir -p /var/boozang
 RUN chmod a+rw /var/boozang
+RUN ln -s /srv/boozang.js /sbin/boozang
 
 VOLUME /var/boozang
 
-ENV PATH=.:$PATH
 ENV DEVICE=
 ENV TIMEOUT=
 ENV FILE=
@@ -29,4 +29,4 @@ ENV SCREENSHOT=0
 
 USER node
 
-ENTRYPOINT ["/srv/boozang.js"]
+ENTRYPOINT ["boozang"]

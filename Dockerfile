@@ -27,4 +27,6 @@ ENV FILE=
 ENV TOKEN=
 ENV SCREENSHOT=0
 
+USER node
+
 ENTRYPOINT ["/srv/boozang.js"]

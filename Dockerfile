@@ -3,14 +3,13 @@ LABEL maintainer="Nicolas Degardin <degardin.n@gmail.com>"
 
 USER root
 
-RUN npm i -g express pretty
+RUN npm i -g node-options
 
 RUN mkdir -p /srv
 WORKDIR /srv
 
-RUN npm link express
+RUN npm link node-options
 RUN npm link puppeteer
-RUN npm link pretty
 
 COPY files/boozang.js /srv/boozang.js
 RUN chmod a+x /srv/boozang.js
@@ -20,12 +19,6 @@ RUN chmod a+rw /var/boozang
 RUN ln -s /srv/boozang.js /sbin/boozang
 
 VOLUME /var/boozang
-
-ENV DEVICE=
-ENV TIMEOUT=
-ENV FILE=
-ENV TOKEN=
-ENV SCREENSHOT=0
 
 USER node
 

@@ -44,19 +44,19 @@ The command outputs the test steps and result to the console, and returns the fo
 * 1 if the tests failed
 * 2 in case of any other error
 
-### Environment variables
+### Options
 
-The following optional environment variables can be specified.
+The following options can be specified.
 
-* `DEVICE`: define a specific [device](https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js) to run the tests
-* `TIMEOUT`: define the command timeout time in seconds
-* `TOKEN`: add a *Boozang* user token to the URL, to allow user connection. The token can also be directly specified in the URL. In this case, the environment variable token will be ignored.
-* `FILE`: define the report and screenshot file name (without an extension). If not specified, the name is `boozang` followed by the date and time
-* `SCREENSHOT`: if *true*, a screenshot is taken two seconds after opening the URL.
+* `device`: define a specific [device](https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js) to run the tests
+* `timeout`: define the command timeout time in seconds
+* `token`: add a *Boozang* user token to the URL, to allow user connection. The token can also be directly specified in the URL. In this case, the environment variable token will be ignored.
+* `file`: define the report and screenshot file name (without an extension). If not specified, the name is `boozang` followed by the date and time
+* `screenshot`: if *true*, a screenshot is taken two seconds after opening the URL.
 
 Example:
 
-`docker run -e TIMEOUT=60 -e TOKEN=a4fd68b4b239 -e FILE=my-custom-name degardinn/boozang https://localhost/bz.html#6d34d123abfe65dc/0.0.1/m3/t2`
+`docker run degardinn/boozang --timeout=60 --token=a4fd68b4b239 --file=my-custom-name --screenshot https://localhost/bz.html#6d34d123abfe65dc/0.0.1/m3/t2`
 
 
 ### Accessing reports
@@ -65,4 +65,4 @@ The report and screenshot are written to the container `/var/boozang` volume.
 
 To retrieve them, the volume can be mapped to a local directory, this way:
 
-`docker run -e SCREENSHOT=1 -v "$(pwd):/var/boozang" degardinn/boozang https://localhost/bz.html#6d34d123abfe65dc/0.0.1/m3/t2`
+`docker run -v "$(pwd):/var/boozang" degardinn/boozang --screenshot https://localhost/bz.html#6d34d123abfe65dc/0.0.1/m3/t2`
